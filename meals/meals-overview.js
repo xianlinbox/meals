@@ -1,7 +1,12 @@
-import { View, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 
-function MealsOverviewScreen() {
-  return <View></View>;
+function MealsOverviewScreen({ route }) {
+  const category_id = route.params.categoryId;
+  return (
+    <View>
+      <Text>Category: {category_id}</Text>
+    </View>
+  );
 }
 
 export default MealsOverviewScreen;
