@@ -1,22 +1,26 @@
 import { View, Text, StyleSheet, FlatList, Image, Pressable, Platform } from "react-native";
 import { MEALS } from "../models/dummy-data";
-function MealsOverviewScreen({ route }) {
+function MealsOverviewScreen({ route, navigation }) {
   const category_id = route.params.categoryId;
   const meals = MEALS.filter((meal) => {
     return meal.categoryIds.indexOf(category_id) >= 0;
   });
+  function showMealDetail(mealId) {
+    navigation.navigate("meal-detail", { mealId: mealId });
+  }
   return (
     <View style={styles.container}>
       <FlatList
         data={meals}
         keyExtractor={(item) => item.id}
         renderItem={(itemData) => {
-          const { title, imageUrl, duration, complexity, affordability } = itemData.item;
+          const { id, title, imageUrl, duration, complexity, affordability } = itemData.item;
           return (
             <View style={styles.mealItem}>
               <Pressable
                 android_ripple={{ color: "#ccc" }}
                 style={({ pressed }) => (pressed ? styles.buttonPressed : null)}
+                onPress={showMealDetail.bind(this, id)}
               >
                 <View style={styles.innerContainer}>
                   <View>
