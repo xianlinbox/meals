@@ -8,7 +8,7 @@ import { FavoritessContextWrapper } from "./store/favorite-context";
 import CategoryScreen from "./category/categories";
 import MealsOverviewScreen from "./meals/meals-overview";
 import MealDetailScreen from "./meals/meal-detail";
-import FavoriteScreen from "./favorite/favorite-screen";
+import FavoriteScreen from "./meals/favorite-screen";
 const Drawer = createDrawerNavigator();
 function DrawerNavigator() {
   return (
